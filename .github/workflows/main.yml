@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies  # Ensure dependencies are installed before running tests
         run: npm install
 
+      - name: Install react-scripts explicitly (if needed)
+        run: npm install react-scripts --save
+
       - name: Cypress run  # Execute Cypress tests
         uses: cypress-io/github-action@v6
         with:
