@@ -2,7 +2,7 @@
 
 describe('Test suite', ()=>{
 
-    it('My First Case', function()
+    it('My First Case', ()=>
     
     {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise')
