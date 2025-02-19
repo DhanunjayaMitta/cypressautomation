@@ -16,12 +16,6 @@ jobs:
           runTests: false  # Prevents Cypress from running tests during installation
           #build: npm run build  # Builds the project before running tests
 
-      - name: Save build folder  # Uploads the build folder as an artifact for later jobs
-        uses: actions/upload-artifact@v4
-        with:
-          name: build  # Artifact name
-          if-no-files-found: error  # Fail if the build folder is missing
-          path: build  # Path to the folder that needs to be saved
 
   cypress-run:  # Job to run Cypress tests
     runs-on: ubuntu-24.04  # Specifies the runner OS
