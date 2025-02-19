@@ -14,7 +14,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           runTests: false  # Prevents Cypress from running tests during installation
-          build: npm run build  # Builds the project before running tests
+          #build: npm run build  # Builds the project before running tests
 
       - name: Save build folder  # Uploads the build folder as an artifact for later jobs
         uses: actions/upload-artifact@v4
