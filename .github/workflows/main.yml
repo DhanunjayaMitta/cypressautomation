@@ -30,12 +30,6 @@ jobs:
       - name: Checkout  # Clone the repository onto the runner
         uses: actions/checkout@v4
 
-      - name: Download the build folder  # Retrieve the build artifact from the install job
-        uses: actions/download-artifact@v4
-        with:
-          name: build  # Specifies the artifact name to download
-          path: build  # Destination path to store the downloaded files
-
       - name: Install dependencies  # Ensure dependencies are installed before running tests
         run: npm install
 
