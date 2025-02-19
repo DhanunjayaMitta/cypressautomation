@@ -1,8 +1,9 @@
 const { defineConfig } = require("cypress");
+const mochawesome = require("cypress-mochawesome-reporter/plugin");
 
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
-  projectId: "dnyfob",
+  projectId: "i8bt6w",
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
@@ -16,8 +17,11 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // Implement node event listeners here
-      require('cypress-mochawesome-reporter/plugin')(on);
-      projectId: "0fdca2bc-ab14-48bc-b5f2-ca46d513cc80"
+      //require('cypress-mochawesome-reporter/plugin')(on);
+      projectId: "0fdca2bc-ab14-48bc-b5f2-ca46d513cc80";
+      mochawesome(on);
+      return config;
+
     },
     //baseUrl: "http://localhost:3000",
   },
