@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
-describe('Test suite', function()
-{
+
+describe('Test suite', ()=>{
 
     it('My First Case', function()
     
@@ -34,3 +34,4 @@ describe('Test suite', function()
         cy.get('button').click()
 
     })
+})
