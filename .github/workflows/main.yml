@@ -21,11 +21,6 @@ jobs:
     runs-on: ubuntu-24.04  # Specifies the runner OS
     needs: install  # Ensures this job runs only after the install job completes
 
-    strategy:
-      fail-fast: false  # If one test fails, others continue running
-      matrix:
-        containers: [1, 2, 3, 4, 5]  # Runs tests in parallel across multiple containers
-
     steps:
       - name: Checkout  # Clone the repository onto the runner
         uses: actions/checkout@v4
@@ -38,7 +33,7 @@ jobs:
         with:
           start: npm start  # Starts the application before running tests
           browser: chrome  # Runs tests using Chrome browser
-          wait-on: http://localhost:3000  # Waits for the application to be available before running tests
+          #wait-on: http://localhost:3000  # Waits for the application to be available before running tests
           record: true  # (Optional) If using Cypress Dashboard for test recording
         env:
           CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}  # Pass environment variables if required
