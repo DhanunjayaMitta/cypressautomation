@@ -15,7 +15,7 @@ module.exports = defineConfig({
   trashAssetsBeforeRuns: false, // ✅ Prevent Cypress from deleting videos
   videoCompression: false, // ✅ Prevent Cypress from compressing/trimming video
   e2e: {
-    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    specPattern: "cypress/integration/examples/*.js",
     setupNodeEvents(on, config) {
       // Implement node event listeners here
       //require('cypress-mochawesome-reporter/plugin')(on);
