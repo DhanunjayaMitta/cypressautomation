@@ -1,50 +1,23 @@
-name: Cypress Tests with Dependency and Artifact Caching
+name: Cypress Tests
 
-on: push  # Run this workflow whenever a push occurs
+on: push
 
 jobs:
-  install:  # Job to install dependencies and build the project
-    runs-on: ubuntu-24.04  # Specifies the runner OS
+  cypress-run:
+    runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout  # Clone the repository onto the runner
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress install  # Install Cypress and project dependencies
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false  # Prevents Cypress from running tests during installation
-          #build: npm run build  # Builds the project before running tests
-
-
-  cypress-run:  # Job to run Cypress tests
-    runs-on: ubuntu-24.04  # Specifies the runner OS
-    needs: install  # Ensures this job runs only after the install job completes
-
-    steps:
-      - name: Checkout  # Clone the repository onto the runner
-        uses: actions/checkout@v4
-
-      - name: Install dependencies  # Ensure dependencies are installed before running tests
+      - name: Install dependencies
         run: npm install
 
-      - name: Install react-scripts explicitly (if needed)
-        run: npm install react-scripts --save
-
-      - name: Cypress run  # Execute Cypress tests
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start  # Starts the application before running tests
-          browser: chrome  # Runs tests using Chrome browser
-          #wait-on: http://localhost:3000  # Waits for the application to be available before running tests
-          record: true  # (Optional) If using Cypress Dashboard for test recording
+          start: npm start
+          browser: chrome
         env:
-          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}  # Pass environment variables if required
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  
-
-      - name: Upload Cypress test results  # Save Cypress test reports as artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-results
-          path: cypress/results
-          if-no-files-found: ignore  # Avoid errors if no reports exist
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
